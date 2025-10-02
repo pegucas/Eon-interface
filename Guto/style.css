@@ -1,0 +1,180 @@
+/* Importação de fonte já está no HTML */
+
+/* Variáveis para cores do terminal */
+:root {
+    --bg-color: #000000;      /* Fundo preto */
+    --text-color: #00ff41;    /* Texto verde b rilhante */
+    --accent-color: #39b658;  /* Destaque verde */
+    --error-color: #ff4154;   /* Vermelho para erros */
+    --matrix:#1e6630;
+}
+
+/* Animação do cursor piscando */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+body {
+    font-family: 'VT323', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 20px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Esconde barras de rolagem causadas pelo canvas */
+}
+
+/* Estilo para o canvas do fundo */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px solid var(--accent-color);
+    background: rgba(0, 0, 0, 0.75); /* Fundo semi-transparente para ver o efeito Matrix através */
+    backdrop-filter: blur(2px); /* Efeito de desfoque sutil */
+}
+
+.screen-title {
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.text-box {
+    border: 1px solid var(--accent-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    min-height: 50px;
+    line-height: 1.6;
+    background: rgba(0, 0, 0, 0.5); /* Fundo da caixa de texto também semi-transparente */
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- TELA DE STARTUP --- */
+#startup-log {
+    margin: 0;
+    font-family: 'VT323', monospace;
+    font-size: 1em;
+    white-space: pre-wrap;
+    height: 300px;
+}
+#startup-log .typed-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--accent-color);
+    animation: blink 1s step-end infinite;
+}
+
+/* NOVO: Estilo para a imagem dentro do discurso de EON */
+#eon-discourse-screen img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Garante que a imagem ocupe sua própria linha */
+    margin: 20px auto; /* Centraliza a imagem e adiciona espaço */
+    border: 1px solid var(--accent-color);
+}
+
+
+/* --- CHAT E INPUTS --- */
+
+#chat-log {
+    height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.input-area label {
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--text-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-bottom-width: 3px;
+    animation: blink 1s step-end infinite;
+}
+
+.feedback {
+    color: var(--error-color);
+    text-align: center;
+    height: 20px;
+    margin: 5px 0 10px 0;
+}
+
+/* --- TELA DE IMAGEM --- */
+
+#image-container {
+    text-align: center;
+}
+
+#generated-image {
+    max-width: 100%;
+    border: 2px solid var(--accent-color);
+    margin-top: 15px;
+}
+
+/* --- BOTÕES --- */
+
+button {
+    display: block;
+    width: 60%;
+    margin: 20px auto 0;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+#send-button {
+    width: auto;
+    margin: 0;
+    margin-left: 10px;
+    padding: 5px 15px;
+}
