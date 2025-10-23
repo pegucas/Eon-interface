@@ -133,8 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             Quero entender sua visão. Conte-me como você acredita que o mundo pode alcançar um futuro mais justo e sustentável.<br>
             Suas ideias me ajudarão a construir uma nova perspectiva.<br><br>
             Antes de iniciarmos, observe um registro do que era considerado um "futuro" em eras passadas:<br>
-            <img id="past-future-image" src="./assets/past-future.jpg" alt="Visão do futuro anterior">
-            <br>Vamos começar?
         `; // <--- AQUI VOCÊ PODE MUDAR O DISCURSO E A URL DA IMAGEM
         pastFutureImageEl.src = "./assets/past-future.jpg"; // Garante que a imagem esteja configurada. Substitua pela sua URL.
     }
@@ -183,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function processAiResponse() {
         // As falas iniciais de EON no chat
         const scriptedAiResponses = [
-            `Olá, meu nome é EON. Venho do futuro para dialogar com aqueles que podem mudá-lo. Quero entender sua visão. Conte-me como você acredita que o mundo pode alcançar um futuro mais justo e sustentável. Suas ideias me ajudarão a construir uma nova perspectiva. Vamos começar?`, // NOVA FALA INICIAL
-            "Entendido. E qual seria o primeiro passo prático para implementar essa visão?",
+            `vamos começar então me diga como seria o futuro ideal para voce`,
             "Interessante. Como a tecnologia se encaixa nesse processo? Seria uma ferramenta ou um obstáculo?"
         ];
 
@@ -211,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         conversationHistory.push({ role: 'user', content: userMessage });
         userInputEl.value = '';
 
-        const totalPerguntas = 3; // Número de perguntas de EON antes de gerar a imagem
+        const totalPerguntas = 2; // Número de perguntas de EON antes de gerar a imagem
         if (currentResponseIndex >= totalPerguntas) {
             initiateImageGeneration();
         } else {
